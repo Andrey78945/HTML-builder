@@ -6,13 +6,11 @@ const dirPath = path.join(__dirname, "./copyDir/");
 const srcPath = path.join(__dirname, "./files/");
 
 async function removeFiles() {
-    console.log("removeFiles")
     const dirDeleting = await rm(dirPath, { recursive: true });
     return dirDeleting;
 }
 
 async function makeDirectory() {
-    console.log("makeDirectory")
     const clearDir = removeFiles().catch(console.error);
     await clearDir;
 
@@ -24,7 +22,6 @@ async function makeDirectory() {
 fs.readdir(srcPath, async (err, files) => {
     const makeDir = makeDirectory().catch(console.error);
     await makeDir;
-    console.log("readdir")
     if (err) {
         throw new Error(err);
     }
