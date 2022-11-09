@@ -17,6 +17,7 @@ const rl = readline.createInterface({
 function ask() {
     rl.question("", (answer) => {
         if (answer === "exit") {
+            console.log("Buy");
             process.exit(1)
         } else {
             outStream.write(`${answer}\n`)
@@ -30,4 +31,7 @@ if (process.platform === "win32") {
     require('readline').createInterface({ input: process.stdin, output: process.stdout }).on('SIGINT', () => process.emit('SIGINT'))
 }
 
-process.on('SIGINT', () => process.exit());
+process.on('SIGINT', () => {
+    console.log("Buy");
+    process.exit()
+});
